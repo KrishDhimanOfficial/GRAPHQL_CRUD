@@ -20,10 +20,17 @@ app.register(cors, {
 
 const schema = `#graphql
     type User {
+        _id: ID
         name: String,
         email: String,
         password: String
     }
+
+   type DeleteResult {
+  success: Boolean!
+  deletedId: ID
+  message: String
+}
 
     type Query {
         users: [User]
@@ -32,7 +39,7 @@ const schema = `#graphql
     type Mutation {
     createUser(name: String!, email: String!, password: String!): User,
     updateUser(id: ID!, name: String!, age: Int!): User
-    deleteUser(id: ID!,): User,
+    deleteUser(id: ID!,): DeleteResult,
     getUser(id: ID!): User
   }
 `;

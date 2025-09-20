@@ -15,6 +15,8 @@ const resolvers = {
         },
         deleteUser: async (_, { id }) => {
             const response = await userModel.deleteOne({ _id: id })
+            console.log(response);
+            
             return response
         },
     },
